@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIFOS</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/light-mode.css" id="theme"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
+</head>
+<body>
+    <header id="header">
+
+        <nav class="nav">
+
+            <div id="logo">
+                <a href="index.html">
+                    <img src="/assets/logo-desktop.svg" alt="logo">
+                </a> 
+            </div>
+
+            <div id="dark-logo" class="not-displayed">
+                <a href="index.html">
+                    <img src="/assets/logo-desktop-modo-noc.svg" alt="logo">
+                </a>
+            </div>
+
+            <!-- <div class="main-search scrolling-search"  id="scrolling-search">
+                       
+                    <input type="search" name="search" placeholder="Busca GIFOS y más">
+                
+                    <button id="searchBtn" class="icon-search-lm"><img src="/assets/icon-search.svg" alt=""></button>
+    
+                    <li id="suggested-list">
+    
+                    </li>
+                                    
+            </div> -->
+                
+            <div id="menu-icon">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+            </div>
+
+            <div id="menu">
+                <ul id="list">
+                    <li id="dark-btn"><a href="#" class="">MODO NOCTURNO</a>
+                    </li>
+                    
+                    <li id="light-btn" class="not-displayed"><a href="#" class="">MODO DIURNO</a>
+                    </li>
+                    <hr>
+                    <li><a href="favoritos.html" class="" >FAVORITOS</a>
+                    </li>
+                    <hr>
+                    <li><a href="misgifos.html" class="">MIS GIFOS</a>
+                    </li>
+                    <hr>
+                    <li id="create-btn" class="not-displayed">
+                        <a href="#" class="">+</a>
+                    </li>
+                </ul> 
+            </div>
+
+        </nav>
+        
+    </header>
+
+    <main>
+
+        <div class="main-title-txt">
+            <img src="/assets/icon-favoritos.svg" alt="">
+            <h2>Favoritos</h2>
+        </div>
+
+        <section class="gallery">
+
+
+        </section>
+
+
+        <section class="trending-sec">
+
+            <div class="trending-title">
+
+                <h2>Trending GIFOS</h2>
+
+                <p>Mira los últimos GIFOS de nuestra comunidad.</p>
+            
+            </div>
+
+            <div class="slider-sec">
+            
+                <button class="slider-btn" id="sliderbtn-prev"><i class="fas fa-chevron-left"></i></button>
+
+                    <div class="slider" id="slider"></div>
+
+                <button class="slider-btn" id="sliderbtn-next" ><i class="fas fa-chevron-right"></i></button>
+
+            </div>            
+
+        </section>
+
+
+        <div class="modal-container">
+
+            <button class="close-modal"><i class="fas fa-times"></i></button>
+    
+            <div class="modal-content">
+    
+                <!-- <img class="modal-img-show" src="" alt="">
+    
+                <p class="modal-txt" >Sample Text</p> -->
+    
+            </div>     
+    
+        </div>
+
+    <!-- </main> -->
+
+    </main>
+
+
+    <footer>
+
+        <div class="social-footer" >
+        
+            <p>Compartir en:</p>
+
+            <ul class="social">
+
+                <li><a href="https://es-la.facebook.com/Acamica.org/"><i class="fab fa-facebook"></i></a></li>
+                <li><a href="https://twitter.com/Acamica_com"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="https://www.instagram.com/acamica/?hl=es-la"><i class="fab fa-instagram"></i></a></li>
+
+             </ul>
+
+            <p class="flex-end">© GIFOS 2020 All Rights Reserved.</p>
+
+        </div>
+            
+    </footer>
+
+
+    <script src="/js/navbar.js"></script>
+    <script src="/js/darkmode.js"></script> 
+
+    <!-- <script src="trendingterms.js"></script>  -->
+    <!-- <script src="trendingcards.js"></script> -->
+    <!-- <script src="favoriteCards.js"></script> -->
+    <!-- <script src="scroll.js"></script> -->
+    <!-- <script src="slider.js"></script> -->
+    <!-- <script src="functionalCards.js"></script> -->
+
+    
+</body>
+</html>

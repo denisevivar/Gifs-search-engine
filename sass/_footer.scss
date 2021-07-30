@@ -1,0 +1,34 @@
+footer {
+    border-bottom: 10px solid #572EE5;
+}
+.social-footer {
+    margin: 30px auto;
+    font-family: 'Roboto';
+
+    font-size: 1.3em;
+    color: #000000;
+    letter-spacing: 0;
+}
+
+.social {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 30%;
+    margin: 20px auto 30px auto;  
+}
+
+
+.social li {   
+    list-style: none;
+    text-decoration: none;
+}
+
+.social i {
+    color: #CDD6E0;
+    height: 100%;
+}
+
+.social i:hover {
+    color: #572EE5;
+}

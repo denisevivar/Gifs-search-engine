@@ -1,0 +1,233 @@
+#header {
+    width: 100%;
+    background-color: #fff;
+    border-top:  #572EE5 10px solid;
+    padding: 0.5em 0;
+    position: fixed;
+    z-index: 100;
+}
+
+.nav {
+    border-left-width: 20px;
+    border-right-width: 20px;
+    border-color: transparent;
+    border-style: solid;
+    margin: 0 auto;
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+
+#logo {
+    cursor: pointer;
+}
+
+#menu-icon {
+    width: 30px;
+    height: 30px;
+    margin-left: auto;
+    position: relative;
+    z-index: 100;
+}
+
+.bar1, .bar2, .bar3 {
+    position: relative;
+    z-index: 100;
+    background-color: #572EE5;
+    width: 2em;
+    height: 0.2em;
+    margin: 5px 1px;
+    transition: 0.3s;
+}
+
+#menu {
+    height: 100vh;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 50; 
+}
+
+#menu.show {
+    display: block;
+}
+    
+#list {
+    position:relative; 
+    top: 80px;
+    background:#572EE5;
+    margin: 0;
+    padding: 30px 0;
+    list-style: none;
+    align-items: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    
+    li {
+        text-align: center;
+        text-decoration: none;
+        margin: 0;
+        list-style: none;
+    }
+
+    a {
+        font-family: $firstFont, "Sans-serif";;
+        font-size: 1em;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-decoration: none;
+        color: #fff;
+        padding: 1.5em;
+        display: block;
+        margin: 0;
+    }
+
+}
+
+
+.hr-header {
+    margin: 0 auto;
+    height: 0.5px;
+    width:50px;
+    background-color: #fff;
+    opacity: 0.3;
+}
+
+.scroll-header{
+      
+    background: #fff;
+    border-bottom: 1px solid #dbdbdb;
+    
+    .bar1, .bar2, .bar3 {
+        background-color: rgba(0,0,0);
+    }
+
+    #menu {
+        a {
+            color: #000;
+        }
+    }
+
+    #logo {
+        a {
+            color: rgba(0, 0, 0);
+        }
+    }
+}
+
+.change-icon {
+    .bar1 {
+        -webkit-transform: rotate(-45deg) translate(-7px, 7px) ;
+        transform: rotate(-45deg) translate(-7px, 7px) ;
+    }
+  
+    .bar2 {opacity: 0;}
+  
+    .bar3 {
+    -webkit-transform: rotate(45deg) translate(-5px, -5px) ;
+    transform: rotate(45deg) translate(-5px, -5px) ;
+  }
+
+}
+
+.stop-scrolling {
+    overflow-y: hidden; 
+}
+
+.not-displayed {
+    display: none;
+}
+.is-displayed {
+    display: block;
+}
+
+
+@media (min-width: 769px) {
+
+    #header {
+        padding: 0.1em 0;
+    }
+
+    #logo, #dark-logo {
+        padding-left: 2em;
+    }
+
+    .nav {
+        justify-content: space-between ;
+        border-left-width: 0; 
+        border-right-width: 0;
+    }
+
+    #menu-icon{
+        display: none;
+    }
+
+    #menu {
+        padding-right: 2em;
+        background: none;
+        display: block;
+        position: inherit;
+        height: auto;
+    }
+
+    #list {
+        height: auto;
+        top: 0;
+        flex-direction: row;
+        background-color: #fff;
+
+        li {
+            margin-left: 1.4em;
+            margin-bottom: 0;
+        }
+
+        a {
+            color: #572EE5;
+            border-bottom: 2px solid #fff;
+            font-size: 0.8em;
+            padding: 0.1em;            
+        }
+
+        a:hover {
+            border-bottom: 2px solid #5ED7C6;
+        }
+    }
+
+    hr {
+        display: none;
+    }
+
+    #create-btn {
+        display: block;
+        a {
+            font-size: 1.2em;
+            height: 30px;
+            width: 30px;  
+            border: 1.5px solid #572EE5;
+            padding: 15px;
+            border-radius: 50%;
+        }
+    
+        a:hover { 
+            background: #572EE5;
+            color: #fff;
+            border-bottom: none;
+        }
+
+        a:active {
+            background: #9CAFC3;
+            border: 1.5px solid #9CAFC3;
+            color: #fff;
+        }
+
+    }
+
+    .header-shadow{
+        box-shadow: 0 2px 4px 1px rgba(156,175,195,0.55);
+    }
+}
+

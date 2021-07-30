@@ -1,0 +1,70 @@
+
+@font-face {
+    font-family: "Roboto";
+    src: url("/fonts/Roboto-Medium.ttf"); }
+
+@font-face {
+    font-family: "Montserrat";
+    src: url("/fonts/Montserrat-Medium.ttf"); }
+
+
+$firstFont: "Montserrat";
+$altFont: "Roboto";
+    
+html {
+    font-size: 100%;
+}
+    
+body {
+    background-color: rgb(255, 255, 255);
+    // font-family: $primerFont, "Sans-serif";
+    // min-height:100vh;
+} 
+    
+    
+ h1 {
+    font-family: $firstFont, "Sans-serif";
+    font-size: 2em;  
+    font-weight: 900;
+    margin: 0.5em 0;
+}
+    
+h2 {
+    font-family: $firstFont, "Sans-serif";
+    color: #572EE5;
+    font-size: 1.5em;
+    font-weight: 700;
+    text-align: center;
+}
+    
+h3 {
+    font-family: $firstFont, "Sans-serif";
+    color: #572EE5;
+    font-size: 1.3em; 
+    font-weight: 700;
+    text-align: center;
+    }
+
+p {
+    font-family: $firstFont, "Sans-serif";
+    color: #000;
+}
+
+input {
+    font-family: $firstFont, "Sans-serif";
+    // font-size: 0.8em;
+}
+    
+    
+    
+@media (min-width: 769px) {
+    
+    html {
+            font-size: 1.3em; 
+        }
+    
+
+    
+    
+}
+    
