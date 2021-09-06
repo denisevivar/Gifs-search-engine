@@ -1,27 +1,51 @@
 const apiKey = 'Fqq38oja6ND6fh0e1eu6njn1coTJ6pBd'
-// const searchContainer = document.querySelector('.search-container')
 const searchInput = document.querySelector('#search-input')
 const suggestionsList = document.querySelector('#suggestions-list')
 const suggestionsDiv = document.querySelector('.suggestions-div')
 const searchBtn = document.querySelector('#search-btn')
 const cleanBtn = document.querySelector('#clean-btn')
 const resultsSection = document.querySelector('#results')
+const title = document.createElement("h2")
 const trendingTerms = document.querySelector('.trending-terms')
-const pagesRecord = 12
+const verMasBtn = document.querySelector('#vermas-btn')
+let gifs
 let inputValue
 let optionList
-let totalPages
+let pageNumber=1 
+let pageSize=12  
+let pagination 
+let pageCont 
 
-///Events SUGGESTIONS LIST (input)
 
+//Event suggestions list (input)
 searchInput.addEventListener('keyup', (e) => {
-    // let inputValue = e.target.value
     inputValue = e.target.value
     getTerms(inputValue)
 })
 
-///Section SEARCH (GET TERMS BY ENDPOINT AND PRINT A LIST)
+//Event search gifs by suggestion list
+suggestionsList.addEventListener('click', getClickedOption)
 
+//Event search term by input (enter)
+searchInput.addEventListener('keyup', (e) => {
+    if (e.keyCode === 13) {
+    //   e.preventDefault();
+        displayResults(inputValue)
+    }
+})
+
+//Event search by clicked trend
+trendingTerms.addEventListener('click', getclickedTrend)
+
+//Event see more btn (pagination)
+verMasBtn.addEventListener ('click', seeMore)
+
+//Event CLEAN ICON. 
+cleanBtn.addEventListener('click', cleanList) 
+cleanBtn.addEventListener('click',cleanGrid) 
+
+
+//SUGGESTIONS LIST
 const getTerms = async (inputValue) => {
     let urlApi = `https://api.giphy.com/v1/gifs/search/tags?api_key=${apiKey}&q=${inputValue}&limit=5&offset=0&rating=g&lang=es`
 
@@ -30,9 +54,9 @@ const getTerms = async (inputValue) => {
         const datos = await response.json()
         const dataArray = datos.data
 
-        createList(dataArray.map((item) => {
-            return item.name
-        }))
+        let items = dataArray.map(item => item.name)
+
+        createList(items)
     }
     catch(error) {
         console.log(error)
@@ -40,12 +64,11 @@ const getTerms = async (inputValue) => {
 }
 
 const createList = (items) => {
-    // console.log(items)
     searchBtn.classList.add('not-displayed')
     cleanBtn.classList.add('is-displayed')
     suggestionsList.innerHTML = ''
 
-    items.map((item) => {
+    items.map(item => {
         optionList = document.createElement("div")
         let icon = document.createElement("icon")
         let term = document.createElement("li")
@@ -56,21 +79,10 @@ const createList = (items) => {
         suggestionsList.appendChild(optionList)
         optionList.appendChild(icon)
         optionList.appendChild(term)
-        
     })
 }
 
-/////////////////////////////////////////
-
-searchInput.addEventListener('keyup', (e) => {
-    if (e.keyCode === 13) {
-    //   e.preventDefault();
-        displayResults(inputValue)
-    }
-})
-
-suggestionsList.addEventListener('click', getClickedOption)
-
+//Search by suggestion list
 function getClickedOption (e) {
     if(e.target.classList.contains('term-list')) {
         inputValue = e.target.innerHTML
@@ -79,7 +91,7 @@ function getClickedOption (e) {
 }
 
 
-///Section RESULTS. Print the title and the gifs on grid
+//Display results. Print the title and the gifs on grid
 
 function displayResults (e) {
     // e.preventDefault()
@@ -104,8 +116,7 @@ function displayResults (e) {
     getGifs(inputValue)    
 }
 
-const title = document.createElement("h2")
-
+//print Title
 function printTitle (inputValue) {
     resultsSection.classList.add('is-displayed')
     title.innerHTML = ''
@@ -113,6 +124,7 @@ function printTitle (inputValue) {
     resultsSection.appendChild(title)
 }
 
+//get gifs by input value
 const getGifs = async (inputValue) => {
     let urlApi= `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&q=${inputValue}&offset=0&rating=g&lang=en`    
     
@@ -120,14 +132,9 @@ const getGifs = async (inputValue) => {
         const response = await fetch(urlApi)
         const datos = await response.json()
         const dataArray = datos.data
-        // console.log(dataArray)
 
-        createGrid(dataArray.map((gif) => {
-            return gif.images.fixed_width_downsampled.url
-        }))
-
-        totalPages = calculatePage(50)
-        console.log(totalPages)
+        gifs = dataArray.map(gif => gif.images.fixed_width_downsampled.url)
+        showGifs(gifs)
     }
 
     catch(error) {
@@ -135,57 +142,7 @@ const getGifs = async (inputValue) => {
     }
 }
 
-const createGrid = (gifs) => {
-    console.log(gifs)
-    const gridResults = document.createElement("div")
-    gridResults.setAttribute('class', 'grid-results') 
-    resultsSection.appendChild(gridResults)
-
-    gifs.map((gif) => {
-        const card = document.createElement("div")
-        const image = document.createElement("img")
-        image.setAttribute('src', gif)
-        gridResults.appendChild(card)
-        card.appendChild(image)
-        
-    })
-}
-
-
-///GENERADOR DE paginas
-
-function calculatePage (total) {
-    return parseInt(Math.ceil(total/pagesRecord))
-}
-
-
-
-
-////////////////////////////////////////////////////////////////
-//Events CLEAN ICON. Clean the input, list, title and gifs results
-
-cleanBtn.addEventListener('click', cleanList)  
-
-
-function cleanList() {
-    searchBtn.classList.remove('not-displayed')
-    cleanBtn.classList.remove('is-displayed')
-    searchInput.value= ''
-    suggestionsList.innerHTML = ''
-}
-
-cleanBtn.addEventListener('click',cleanGrid)
-
-function cleanGrid () {
-    resultsSection.classList.remove('is-displayed')
-    resultsSection.innerHTML = ''
-}
-
-
-///TRENDING TERMS
-
-
-
+//TRENDING TERMS
 const getTrends = async () => {
     let urlApi = `https://api.giphy.com/v1/trending/searches?api_key=${apiKey}`
 
@@ -194,7 +151,6 @@ const getTrends = async () => {
         const datos = await response.json()
         const dataArray = datos.data 
         printTrends(dataArray)
-        // console.log(dataArray)
     }
 
     catch(error) {
@@ -204,7 +160,6 @@ const getTrends = async () => {
 getTrends()
 
 function printTrends (dataArray) {
-    
     for (let i=0; i<5; i++){
         const word=document.createElement("p")
         const coma=document.createElement("p")
@@ -216,8 +171,6 @@ function printTrends (dataArray) {
     }
 }
 
-trendingTerms.addEventListener('click', getclickedTrend)
-
 function getclickedTrend (e) {
     if(e.target.classList.contains('term')) {
         clickedTrend = e.target
@@ -227,3 +180,50 @@ function getclickedTrend (e) {
     getGifs(inputValue)
     printTitle(inputValue)
 }
+
+
+//pagination
+function paginate(array, page_size, page_number) {
+    return array.slice((page_number - 1) * page_size, page_number * page_size);
+}
+
+function seeMore(){
+    pageNumber ++;
+    showGifs(gifs)
+}
+
+const showGifs = (gifs) => {
+    pagination = paginate(gifs,pageSize,pageNumber);
+
+    const gridResults = document.createElement("div")
+    gridResults.setAttribute('class', 'grid-results') 
+    resultsSection.appendChild(gridResults)
+
+    pagination.map((gif) => {
+        const card = document.createElement("div")
+        card.setAttribute('class', 'card')
+        const image = document.createElement("img")
+        image.setAttribute('src', gif)
+        gridResults.appendChild(card)
+        card.appendChild(image)
+    })
+    pageCont = Math.ceil(gifs.length/pageSize)
+
+    pageNumber < pageCont ? verMasBtn.classList.add('is-displayed') : null
+    pageNumber >= pageCont ? verMasBtn.classList.remove('is-displayed') : null
+}
+
+//Clean the input, list, title and gifs results
+function cleanList() {
+    searchBtn.classList.remove('not-displayed')
+    cleanBtn.classList.remove('is-displayed')
+    searchInput.value= ''
+    suggestionsList.innerHTML = ''
+}
+
+function cleanGrid () {
+    resultsSection.classList.remove('is-displayed')
+    resultsSection.innerHTML = ''
+}
+
+

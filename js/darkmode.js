@@ -8,9 +8,7 @@ function changeToLightMode() {
 }
 
 function switchSheet() {
-    if (theme.getAttribute("href") == "/light-mode.css") {
-      theme.href = "/dark-mode.css";
-    } else {
-      theme.href = "/light-mode.css";
+    theme.getAttribute("href") == "/light-mode.css" ?
+      theme.href = "/dark-mode.css" :
+      theme.href = "/light-mode.css" 
     }
-  }

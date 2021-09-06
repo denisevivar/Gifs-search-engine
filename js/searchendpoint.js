@@ -57,6 +57,7 @@ function printGifs(dataArray) {
         gridSection.style.display = 'flex'
         for (let i=0; i<dataArray.length; i++){
         const imageGif = dataArray[i].images.fixed_width_downsampled.url
+        console.log(imageGif)
         const image = document.createElement("img")
         const title = document.createElement("h2")
         image.setAttribute('src', imageGif)
