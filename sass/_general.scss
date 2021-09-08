@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 @font-face {
     font-family: "Roboto";
@@ -13,31 +18,34 @@ $altFont: "Roboto";
 
 $firstColor: #572EE5;
 $altColor:#5ED7C6;
-$darkFirstColor: #37383C;
 $whiteColor:#fff;
 $blackColor: #000;
+$greyColor:#9CAFC3;
+$backColor: #F3F5F8;
+
+$darkFirstColor: #37383C;
     
 html {
     font-size: 100%;
 }
     
 body {
-    background-color: rgb(255, 255, 255);
-    // font-family: $primerFont, "Sans-serif";
-    // min-height:100vh;
+    background-color: $whiteColor;
 } 
-    
-    
- h1 {
+
+h1 {    
     font-family: $firstFont, "Sans-serif";
     font-size: 2em;  
     font-weight: 900;
+    color: $firstColor; 
+    text-align: center;
+    line-height: 40px;
     margin: 0.5em 0;
 }
-    
+        
 h2 {
     font-family: $firstFont, "Sans-serif";
-    color: #572EE5;
+    color: $firstColor;
     font-size: 1.5em;
     font-weight: 700;
     text-align: center;
@@ -45,22 +53,11 @@ h2 {
     
 h3 {
     font-family: $firstFont, "Sans-serif";
-    color: #572EE5;
-    font-size: 1.3em; 
+    color: $firstColor;
+    font-size: 1em; 
     font-weight: 700;
     text-align: center;
     }
-
-p {
-    font-family: $firstFont, "Sans-serif";
-    color: #000;
-}
-
-input {
-    font-family: $firstFont, "Sans-serif";
-    // font-size: 0.8em;
-}
-    
     
     
 @media (min-width: 769px) {

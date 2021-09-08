@@ -8,6 +8,7 @@ const resultsSection = document.querySelector('#results')
 const title = document.createElement("h2")
 const trendingTerms = document.querySelector('.trending-terms')
 const verMasBtn = document.querySelector('#vermas-btn')
+const errorContainer = document.querySelector('.error-container')
 let gifs
 let inputValue
 let optionList
@@ -102,7 +103,7 @@ function displayResults (e) {
     // }
 
     // function showError () {
-    //     errorContainer.style.display = 'flex'
+    //     errorContainer.classList.add = 'is-displayed'
     // }
 
     // setTimeout(() => {
@@ -131,8 +132,8 @@ const getGifs = async (inputValue) => {
     try {
         const response = await fetch(urlApi)
         const datos = await response.json()
-        const dataArray = datos.data
-
+        dataArray = datos.data
+        
         gifs = dataArray.map(gif => gif.images.fixed_width_downsampled.url)
         showGifs(gifs)
     }
@@ -217,6 +218,7 @@ const showGifs = (gifs) => {
 function cleanList() {
     searchBtn.classList.remove('not-displayed')
     cleanBtn.classList.remove('is-displayed')
+    verMasBtn.classList.remove('is-displayed')
     searchInput.value= ''
     suggestionsList.innerHTML = ''
 }

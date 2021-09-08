@@ -26,18 +26,6 @@
                     <img src="/assets/logo-desktop-modo-noc.svg" alt="logo">
                 </a>
             </div>
-
-            <!-- <div class="main-search scrolling-search"  id="scrolling-search">
-                       
-                    <input type="search" name="search" placeholder="Busca GIFOS y más">
-                
-                    <button id="searchBtn" class="icon-search-lm"><img src="/assets/icon-search.svg" alt=""></button>
-    
-                    <li id="suggested-list">
-    
-                    </li>
-                                    
-            </div> -->
                 
             <div id="menu-icon">
                 <div class="bar1"></div>
@@ -56,12 +44,12 @@
                     <li><a href="favoritos.html" class="" >FAVORITOS</a>
                     </li>
                     <hr class="hr-header">
-                    <li><a href="misgifos.html" class="">MIS GIFOS</a>
+                    <!-- <li><a href="misgifos.html" class="">MIS GIFOS</a>
                     </li>
-                    <hr class="hr-header">
-                    <li id="create-btn" class="not-displayed">
+                    <hr class="hr-header"> -->
+                    <!-- <li id="create-btn" class="not-displayed">
                         <a href="#" class="">+</a>
-                    </li>
+                    </li> -->
                 </ul> 
             </div>
 
@@ -76,7 +64,7 @@
 
         <section id="search">
             <div class="search-image">    
-                <img src="/assets/ilustra_header.svg" alt="search image">
+                <img src="/assets/ilustra_header.svg" alt="search-image">
             </div>
 
             <div class="search-bar">
@@ -95,66 +83,46 @@
         </section>
 
         <section id="trending">
-            <h3>Trending:</h3>
+            <h2>Trending:</h2>
+
             <div class="trending-terms">
                 
             </div>
-
         </section>
 
 
         <section id="results" class="not-displayed">
 
-            
         </section>
+
+        <div class="error-container not-displayed">
+            <img src="/assets/icon-busqueda-sin-resultado.svg" alt="">
+            <p>Intenta con otra búsqueda.</p>
+        </div>
 
         <div id="vermas-btn" class="not-displayed">
             <span>VER MÁS</span>
         </div>
     
+        <section class="slider-section">
 
-
-
-                <!-- <div class="main-search">
-                    <form id="form" action="#" method="POST">                        
-                    </form> 
-
-                </div> -->
-    </main> 
-
-<!--                <div class="result">
-                    <li id="suggested-list">
-                    </li>
-                </div>
-                 <div class="error-container">
-                    <img src="/assets/icon-busqueda-sin-resultado.svg" alt="">
-                    <p>Intenta con otra búsqueda.</p>
-                </div>
-                <div class="trending-div" >
-                    <h3>Trending:</h3>
-                    <div id="trends"></div>
-                </div>
-        </section>
-        <section class="grid-gifs">
-            <div class="grid-container"></div>
-        </section>
-        <section class="trending-sec">
-            <div class="trending-title">
+            <div class="slider-title">
                 <h2>Trending GIFOS</h2>
                 <p>Mira los últimos GIFOS de nuestra comunidad.</p>
             </div>
-            <div class="slider-sec">
-                <button class="slider-btn" id="sliderbtn-prev"><i class="fas fa-chevron-left"></i></button>
-                    <div class="slider" id="slider"></div>
-                <button class="slider-btn" id="sliderbtn-next" ><i class="fas fa-chevron-right"></i></button>
-            </div>            
-        </section>
-        <div class="modal-container">
-            <button class="close-modal"><i class="fas fa-times"></i></button>
-            <div class="modal-content"></div>     
-        </div>-->
-    
-    <!-- <footer>
+
+            <div class="slider" id="slider">
+
+            </div>
+
+            <button class="slider-btn" id="sliderbtn-prev"><i class="fas fa-chevron-left"></i></button>
+            <button class="slider-btn" id="sliderbtn-next" ><i class="fas fa-chevron-right"></i></button>
+
+        </section>            
+
+    </main> 
+
+    <footer>
         <div class="social-footer" >
             <p>Compartir en:</p>
             <ul class="social">
@@ -164,13 +132,20 @@
              </ul>
             <p class="flex-end">© GIFOS 2020 All Rights Reserved.</p>
         </div>
-    </footer> -->
+    </footer>
+
+        <!-- <div class="modal-container">
+            <button class="close-modal"><i class="fas fa-times"></i></button>
+            <div class="modal-content"></div>     
+        </div> -->
+    
+
 
     <script src="/js/navbar.js"></script>
     <script src="/js/darkmode.js"></script> 
     <script src="/js/searchGifs.js"></script>
-    <!-- <script src="/js/trendingcards.js"></script>
-    <script src="/js/functionalCards.js"></script>
-    <script src="/js/slider.js"></script> -->
+    <!-- <script src="/js/cardMouseover.js"></script> -->
+     <script src="/js/sliderCards.js"></script>
+    <!--<script src="/js/functionalCards.js"></script>-->
 </body>
 </html>
