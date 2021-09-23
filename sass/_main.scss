@@ -7,13 +7,11 @@ main {
 }
 
 #title{
-    width: 75%;
-    
+    width: 75%;    
     span {
         color: $altColor;
    }
 }
-
 
 #search {
     display: flex;
@@ -39,7 +37,6 @@ main {
     align-items: center;
     border: 1.5px solid $firstColor;
     border-radius: 30px;
-    
 
     #search-input {
         font-family: $firstFont, "Sans-serif";
@@ -103,7 +100,7 @@ main {
     }
 }
 #trending {
-    margin: 2em;
+    margin: 2em;   
 
     h2 {
         margin-bottom: 0.5em;
@@ -112,7 +109,7 @@ main {
 
 .trending-terms {
     margin: auto;
-    width: 80%;
+    
     text-align: center;
     p {
         font-family: $firstFont, "Sans-serif";
@@ -128,8 +125,9 @@ main {
     cursor: pointer;
 }
 
-#results {
+#results, #results-fav {
     padding: 1em;
+    margin-bottom: 1em;
     h2 {
         padding: 1em 0;
     }
@@ -145,6 +143,31 @@ main {
     height: 1px;
 }
 
+.error-container, .error-container-fav {
+    width: 90%;
+    margin: 0 auto 3em auto;
+    
+    img {
+        width: 50%;
+    }
+
+    p {
+        font-family: $firstFont;
+        font-size: 1.3em;
+        font-weight: 700;
+        color: $altColor;
+        margin-top: 1em;
+        text-align: center;
+    }
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .grid-results {
     margin-top: 35px;
     display: grid;
@@ -154,14 +177,16 @@ main {
 }
 
 .card {
+    cursor: pointer;
+    position: relative;
     img {
         width: 100%;
-        height: 8em;
+        height: 10em;
         margin: auto;
     }
 }
 
-#vermas-btn{
+.vermas-btn{
     cursor: pointer;
     padding: 10px 30px;
     margin: 2em auto;
@@ -175,17 +200,16 @@ main {
     text-decoration: none;
 }
 
-#vermas-btn:active {
+.vermas-btn:active {
     background-color: $firstColor;
     color: $whiteColor;
 }
 
 .slider-section {
-    // overflow: hidden;
     background-color: $backColor;
     position: relative; 
     width: 100%;
-    padding: 2em 0;
+    padding: 2em 0 3em 0;
 }
 
 .slider {
@@ -195,6 +219,8 @@ main {
     overflow-x: scroll;
     scroll-snap-type: x mandatory; 
     scroll-behavior: smooth;
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
 }
 
 .slider::-webkit-scrollbar{
@@ -223,6 +249,7 @@ main {
 }
 
 .slider-card {
+    cursor: pointer;
     margin: 0 0.5em;
     position: relative;
 
@@ -230,13 +257,9 @@ main {
         max-width: 360px;
         height: 300px; 
     } 
-    
-    span {
-        display: none;
-    }
 }
 
-.card-mouseover {
+.card-hover {
     display: block;
     height: 100%;
     width: 100%;
@@ -244,31 +267,73 @@ main {
     position: absolute;
     top:0;
     left: 0;
+    z-index: 5;
+}
 
+.card-hover-off{
+    display: none;
+}
+
+.card-txt{
+    position: absolute;
+    bottom: 0;
+    margin: 0.5em;
+    
     h3 {
-        position: absolute;
-        max-width: 90%;
-        font-family: 'Roboto';
-        // font-size: 1.5em;
-        font-weight: 600;
-        color: $whiteColor;
-        bottom:0;
-        left: 0; 
+        margin-top: 5px; 
     }
 
     span {
-        position: absolute;
-        font-family: 'Roboto';
-        font-size: 1.3em;
-        font-weight: 500;
-        color: #bd0d0d;  
-        top:0;
-        left: 0; 
+        font-family: $altFont;
+        font-size: 1em;
+        font-weight: 200;
+        color: $whiteColor;    
     }
+
+}
+.id-gif {
+    display: none;
 }
 
-.card-mouseover-off{
+.card-icons {
+    position: absolute;
+    display: flex;
+    justify-content: flex-end;
+    right: 0;   
+}
+
+.icons {
+    opacity: 0.5;
+    width: 32px;
+    height: 32px;
+    margin: 7px 7px 0 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: $whiteColor;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.icons:hover {
+    opacity: 1;
+}
+
+.heart-icon {
+    
+    background-image: url(/assets/icon-fav-hover.svg);
+}
+
+.heart-icon-active {
     display: none;
+    background-image: url(/assets/icon-fav-active.svg);
+}
+
+.download-icon {
+    background-image: url(/assets/icon-download.svg);
+}
+
+.max-icon {
+    background-image: url(/assets/icon-max.svg);
 }
 
 .slider-btn {
@@ -298,50 +363,12 @@ main {
     right: 20px;
 }
 
-.card-icons {
-    display: flex;
-    justify-content: flex-end;   
-}
-
-.icons {
-    opacity: 0.5;
-    width: 32px;
-    height: 32px;
-    margin: 7px 7px 0 0;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: $whiteColor;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.icons:hover {
-    opacity: 1;
-}
-
-.heart-icon {
-    background-image: url(/assets/icon-fav-hover.svg);
-}
-
-.heart-icon-filled {
-    background-image: url(/assets/icon-fav-active.svg)
-}
-
-.download-icon {
-    background-image: url(/assets/icon-download.svg);
-}
-
-.max-icon {
-    background-image: url(/assets/icon-max.svg);
-}
-
 .modal-container {
-    visibility: hidden;
-    position: fixed;
+    display: none;
     z-index: 5000;
     background-color: $whiteColor;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     top:0;
     left: 0;
     overflow: hidden;
@@ -351,23 +378,36 @@ main {
 }
 
 .modal-content {
-    max-width: 80%;
     height: 65%;
-    z-index: 3;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    font-family: 'Montserrat','Arial', sans-serif;
+    font-family: $firstFont, sans-serif;
     line-height: 23px;
 
+    .card-icons {
+        position: static;
+        align-self: flex-start;
+    }
+
+    .card-txt {
+        width: 100%;
+    }
+
     img {
-        max-height: 90%;
-        margin: auto;
+        max-height: 60vh;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    span {
+        margin-top: 0.5em;
     }
 
     h3 {
-        font-size: 1.5em;
-        font-weight: 900;
+        margin-top: 0.5em;
+        color: $blackColor;
+        font-family: $firstFont;
     }
 }
 
@@ -387,7 +427,6 @@ main {
     position: absolute;
     top: 1em;
     right: 1.5em;
-    z-index: 3;
     width: 30px;
     height: 30px;
     color:$firstColor;
@@ -400,23 +439,6 @@ main {
     font-size: 30px;    
 }
 
-
-// .error-container {
-//     display: none;
-//     flex-direction: column;
-//     width: 60%;
-//     margin: 20px auto;
-//     p {
-//         margin: 10px auto;
-//         font-family: 'Montserrat','Arial', sans-serif;
-//         color: $altColor;
-//         font-size: 1.5em;
-//         font-weight: 700;
-//         text-align: center;
-// }
-
-
-/////////////////
 
 @media (min-width: 769px) {
 
@@ -438,21 +460,50 @@ main {
         width: 100%;
     }
 
-    #results {
+    .trending-terms {
+        width: 60%;
+    }
+    
+    #results, #results-fav {
         padding: 1em 3em;
+    }
+
+    .error-container,.error-container-fav {
+        img {
+            width: 20%;
+        }
     }
 
     .grid-results {
         grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 1.5em 1.5em;
-        img {
-            height: 10em;
-        }
     }
 
     .slider-btn {
         display: block;
     }
 
+    .modal-content {
+        width: 50%;
 
+        .icons {
+            margin: 1em 1em 0 0;
+            width: 35px;
+            height: 35px;
+            
+            background-size: 35px;
+        }
+    }
+}
+
+#favoritos {
+    margin: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    img {
+        margin: 1em 0;
+    }
 }

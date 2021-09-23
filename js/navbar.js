@@ -1,9 +1,7 @@
 const menuIcon = document.querySelector("#menu-icon");
 const logo = document.querySelector("#logo")
 const menu = document.querySelector("#menu")
-
 const header = document.querySelector("#header")
-
 const darkBtn = document.querySelector("#dark-btn");
 const lightBtn = document.querySelector("#light-btn");
 
@@ -26,7 +24,7 @@ function switchBtn() {
     darkBtn.classList.toggle("not-displayed");
   }
 
-/////
+
 window.onscroll = function (){
     
     let scroll = window.scrollY

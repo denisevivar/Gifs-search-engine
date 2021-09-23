@@ -7,24 +7,14 @@
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/light-mode.css" id="theme"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
-
-
 </head>
-<body>
+<body >
     <header id="header">
-
         <nav class="nav">
-
             <div id="logo">
                 <a href="index.html">
                     <img src="/assets/logo-desktop.svg" alt="logo">
                 </a> 
-            </div>
-
-            <div id="dark-logo" class="not-displayed">
-                <a href="index.html">
-                    <img src="/assets/logo-desktop-modo-noc.svg" alt="logo">
-                </a>
             </div>
                 
             <div id="menu-icon">
@@ -44,17 +34,9 @@
                     <li><a href="favoritos.html" class="" >FAVORITOS</a>
                     </li>
                     <hr class="hr-header">
-                    <!-- <li><a href="misgifos.html" class="">MIS GIFOS</a>
-                    </li>
-                    <hr class="hr-header"> -->
-                    <!-- <li id="create-btn" class="not-displayed">
-                        <a href="#" class="">+</a>
-                    </li> -->
                 </ul> 
             </div>
-
         </nav>
-        
     </header>
 
     <main>
@@ -84,68 +66,59 @@
 
         <section id="trending">
             <h2>Trending:</h2>
-
-            <div class="trending-terms">
-                
-            </div>
+            <div class="trending-terms"></div>
         </section>
 
-
         <section id="results" class="not-displayed">
-
         </section>
 
         <div class="error-container not-displayed">
-            <img src="/assets/icon-busqueda-sin-resultado.svg" alt="">
-            <p>Intenta con otra búsqueda.</p>
+            <div class="flex">
+                <img src="/assets/icon-busqueda-sin-resultado.svg" alt="no results image">
+                <p>Intenta con otra búsqueda.</p>
+            </div>
         </div>
 
-        <div id="vermas-btn" class="not-displayed">
+        <div class="vermas-btn not-displayed">
             <span>VER MÁS</span>
         </div>
     
         <section class="slider-section">
-
             <div class="slider-title">
                 <h2>Trending GIFOS</h2>
                 <p>Mira los últimos GIFOS de nuestra comunidad.</p>
             </div>
 
-            <div class="slider" id="slider">
-
-            </div>
+            <div class="slider" id="slider"></div>
 
             <button class="slider-btn" id="sliderbtn-prev"><i class="fas fa-chevron-left"></i></button>
             <button class="slider-btn" id="sliderbtn-next" ><i class="fas fa-chevron-right"></i></button>
-
         </section>            
-
     </main> 
 
     <footer>
         <div class="social-footer" >
             <p>Compartir en:</p>
             <ul class="social">
-                <li><a href="https://es-la.facebook.com/Acamica.org/"><i class="fab fa-facebook"></i></a></li>
-                <li><a href="https://twitter.com/Acamica_com"><i class="fab fa-twitter"></i></a></li>
-                <li><a href="https://www.instagram.com/acamica/?hl=es-la"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="https://es-la.facebook.com"><i class="fab fa-facebook"></i></a></li>
+                <li><a href="https://twitter.com"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a></li>
              </ul>
-            <p class="flex-end">© GIFOS 2020 All Rights Reserved.</p>
         </div>
+        <p class="rights">© GIFOS 2021 All Rights Reserved.</p>
     </footer>
 
-        <!-- <div class="modal-container">
-            <button class="close-modal"><i class="fas fa-times"></i></button>
-            <div class="modal-content"></div>     
-        </div> -->
-    
+    <div class="modal-container">
+        <button class="close-modal"><i class="fas fa-times"></i></button>
+        <div class="modal-content"></div>     
+    </div>
 
-
+    <script src="/js/generics.js"></script>
     <script src="/js/navbar.js"></script>
     <script src="/js/darkmode.js"></script> 
     <script src="/js/searchGifs.js"></script>
-    <!-- <script src="/js/cardMouseover.js"></script> -->
-     <script src="/js/sliderCards.js"></script>
-    <!--<script src="/js/functionalCards.js"></script>-->
+    <script src="/js/sliderCards.js"></script>
+    <script src="/js/interactiveCards.js"></script>
+     
 </body>
 </html>

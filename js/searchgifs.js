@@ -1,21 +1,15 @@
-const apiKey = 'Fqq38oja6ND6fh0e1eu6njn1coTJ6pBd'
 const searchInput = document.querySelector('#search-input')
 const suggestionsList = document.querySelector('#suggestions-list')
 const suggestionsDiv = document.querySelector('.suggestions-div')
 const searchBtn = document.querySelector('#search-btn')
 const cleanBtn = document.querySelector('#clean-btn')
-const resultsSection = document.querySelector('#results')
+const resultsSectionIndex = document.querySelector('#results')
 const title = document.createElement("h2")
 const trendingTerms = document.querySelector('.trending-terms')
-const verMasBtn = document.querySelector('#vermas-btn')
+const verMasBtn = document.querySelector('.vermas-btn')
 const errorContainer = document.querySelector('.error-container')
-let gifs
 let inputValue
 let optionList
-let pageNumber=1 
-let pageSize=12  
-let pagination 
-let pageCont 
 
 
 //Event suggestions list (input)
@@ -59,8 +53,8 @@ const getTerms = async (inputValue) => {
 
         createList(items)
     }
-    catch(error) {
-        console.log(error)
+    catch {
+        showError()
     }
 }
 
@@ -69,18 +63,16 @@ const createList = (items) => {
     cleanBtn.classList.add('is-displayed')
     suggestionsList.innerHTML = ''
 
+    let resultsHTML =''
+
     items.map(item => {
-        optionList = document.createElement("div")
-        let icon = document.createElement("icon")
-        let term = document.createElement("li")
-        optionList.setAttribute('class','option-list')
-        icon.setAttribute('class','fa fa-search')
-        term.setAttribute('class', 'term-list')
-        term.innerHTML = item
-        suggestionsList.appendChild(optionList)
-        optionList.appendChild(icon)
-        optionList.appendChild(term)
+        resultsHTML +=
+        `<div class="option-list">
+                <icon class="fa fa-search"></icon>
+                <li class="term-list">${item}</li>
+         </div>`
     })
+    suggestionsList.innerHTML = resultsHTML
 }
 
 //Search by suggestion list
@@ -88,30 +80,13 @@ function getClickedOption (e) {
     if(e.target.classList.contains('term-list')) {
         inputValue = e.target.innerHTML
         displayResults(inputValue)
+        console.log(inputValue)
     }
 }
 
-
 //Display results. Print the title and the gifs on grid
 
-function displayResults (e) {
-    // e.preventDefault()
- 
-    // if(inputValue === '') {
-    //     showError()
-    //     return
-    // }
-
-    // function showError () {
-    //     errorContainer.classList.add = 'is-displayed'
-    // }
-
-    // setTimeout(() => {
-    //     errorContainer.remove()
-    // }, 5000)
-
-    // suggestionsList.classList.toggle('not-displayed')
-
+function displayResults () {
     cleanGrid ()
     printTitle(inputValue)
     getGifs(inputValue)    
@@ -119,10 +94,10 @@ function displayResults (e) {
 
 //print Title
 function printTitle (inputValue) {
-    resultsSection.classList.add('is-displayed')
+    resultsSectionIndex.classList.add('is-displayed')
     title.innerHTML = ''
     title.innerHTML = inputValue
-    resultsSection.appendChild(title)
+    resultsSectionIndex.appendChild(title)
 }
 
 //get gifs by input value
@@ -133,44 +108,45 @@ const getGifs = async (inputValue) => {
         const response = await fetch(urlApi)
         const datos = await response.json()
         dataArray = datos.data
-        
-        gifs = dataArray.map(gif => gif.images.fixed_width_downsampled.url)
-        showGifs(gifs)
+
+        showGifs(dataArray)
+    }
+    catch {
+        showError()
     }
 
-    catch(error) {
-        console.log(error)
+    if(dataArray == '') {
+        showError()
     }
 }
 
 //TRENDING TERMS
 const getTrends = async () => {
     let urlApi = `https://api.giphy.com/v1/trending/searches?api_key=${apiKey}`
-
     try {
         const response = await fetch(urlApi)
         const datos = await response.json()
         const dataArray = datos.data 
         printTrends(dataArray)
     }
-
-    catch(error) {
-        console.log(error)
+    catch {
+        showError()
     }
 }
 getTrends()
 
 function printTrends (dataArray) {
+    let resultsHTML = ''
     for (let i=0; i<5; i++){
-        const word=document.createElement("p")
-        const coma=document.createElement("p")
-        word.setAttribute('class', 'term' )
-        word.innerHTML=dataArray[i]
-        coma.innerHTML=',  '
-        trendingTerms.appendChild(word)
-        trendingTerms.appendChild(coma)
+        resultsHTML +=
+            `<p class="term">${dataArray[i]}</p>
+            <p> - </p>
+            `
+            
     }
+    trendingTerms.innerHTML = resultsHTML
 }
+// <p class="term">~  </p>
 
 function getclickedTrend (e) {
     if(e.target.classList.contains('term')) {
@@ -182,34 +158,43 @@ function getclickedTrend (e) {
     printTitle(inputValue)
 }
 
-
-//pagination
-function paginate(array, page_size, page_number) {
-    return array.slice((page_number - 1) * page_size, page_number * page_size);
-}
-
 function seeMore(){
     pageNumber ++;
-    showGifs(gifs)
+    showGifs(dataArray)
 }
 
-const showGifs = (gifs) => {
-    pagination = paginate(gifs,pageSize,pageNumber);
+const showGifs = (_array) => {
+    pagination = paginate(dataArray,pageSize,pageNumber);
 
     const gridResults = document.createElement("div")
     gridResults.setAttribute('class', 'grid-results') 
-    resultsSection.appendChild(gridResults)
+    resultsSectionIndex.appendChild(gridResults) 
 
-    pagination.map((gif) => {
-        const card = document.createElement("div")
-        card.setAttribute('class', 'card')
-        const image = document.createElement("img")
-        image.setAttribute('src', gif)
-        gridResults.appendChild(card)
-        card.appendChild(image)
-    })
-    pageCont = Math.ceil(gifs.length/pageSize)
+    let resultsHTML = ''
 
+    pagination.map(gifItem =>{
+            resultsHTML +=
+            `<div class="card">
+                <div class="card-hover card-hover-off">
+                    <div class="card-icons">
+                        <div class="icons heart-icon"></div>
+                        <div class="icons heart-icon-active"></div>    
+                        <div class="icons download-icon"></div>
+                        <div class="icons max-icon"></div>
+                    </div>
+                    <div class="card-txt">
+                        <span>${gifItem.username !== '' ? gifItem.username: 'User' }</span> 
+                        <span class="id-gif">${gifItem.id}</span>  
+                        <h3>${gifItem.title}</h3>  
+                    </div>
+                </div> 
+                <img class="card-img" src="${gifItem.images.fixed_width.url}" alt="${gifItem.title}">
+            </div>`
+        })    
+
+    gridResults.innerHTML = resultsHTML
+                 
+    pageCont = Math.ceil(dataArray.length/pageSize)
     pageNumber < pageCont ? verMasBtn.classList.add('is-displayed') : null
     pageNumber >= pageCont ? verMasBtn.classList.remove('is-displayed') : null
 }
@@ -219,13 +204,25 @@ function cleanList() {
     searchBtn.classList.remove('not-displayed')
     cleanBtn.classList.remove('is-displayed')
     verMasBtn.classList.remove('is-displayed')
+    errorContainer.classList.remove('is-displayed')
     searchInput.value= ''
     suggestionsList.innerHTML = ''
 }
 
 function cleanGrid () {
-    resultsSection.classList.remove('is-displayed')
-    resultsSection.innerHTML = ''
+    resultsSectionIndex.classList.remove('is-displayed')
+    resultsSectionIndex.innerHTML = ''
 }
+
+//Show error if searching doesnt work
+function showError () {
+    resultsSectionIndex.classList.remove('is-displayed')
+    errorContainer.classList.add('is-displayed')
+
+    setTimeout(() => {
+        errorContainer.remove()
+    }, 5000)
+}
+
 
 

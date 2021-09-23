@@ -22,8 +22,11 @@ $whiteColor:#fff;
 $blackColor: #000;
 $greyColor:#9CAFC3;
 $backColor: #F3F5F8;
-
 $darkFirstColor: #37383C;
+
+// .theme {
+
+// }
     
 html {
     font-size: 100%;
@@ -31,6 +34,7 @@ html {
     
 body {
     background-color: $whiteColor;
+    transition: .3 ease all;
 } 
 
 h1 {    
@@ -46,28 +50,21 @@ h1 {
 h2 {
     font-family: $firstFont, "Sans-serif";
     color: $firstColor;
-    font-size: 1.5em;
+    font-size: 1.6em;
     font-weight: 700;
     text-align: center;
 }
     
 h3 {
-    font-family: $firstFont, "Sans-serif";
-    color: $firstColor;
-    font-size: 1em; 
-    font-weight: 700;
-    text-align: center;
-    }
-    
-    
+    font-family: $altFont, "Sans-serif";
+    color: $whiteColor;
+    font-size: 1.2em; 
+    font-weight: 600;
+}
+        
 @media (min-width: 769px) {
-    
     html {
             font-size: 1.3em; 
         }
-    
-
-    
-    
 }
     

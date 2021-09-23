@@ -43,7 +43,8 @@ abbr[title] {
   /* 1 */
   text-decoration: underline;
   /* 2 */
-  text-decoration: underline dotted;
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
   /* 2 */
 }
 
@@ -372,7 +373,6 @@ hr {
 }
 
 .change-icon .bar1 {
-  -webkit-transform: rotate(-45deg) translate(-7px, 7px);
   transform: rotate(-45deg) translate(-7px, 7px);
 }
 
@@ -381,7 +381,6 @@ hr {
 }
 
 .change-icon .bar3 {
-  -webkit-transform: rotate(45deg) translate(-5px, -5px);
   transform: rotate(45deg) translate(-5px, -5px);
 }
 
@@ -760,7 +759,8 @@ main {
   display: flex;
   /* position: relative; */
   overflow-x: scroll;
-  scroll-snap-type: x mandatory;
+  -ms-scroll-snap-type: x mandatory;
+      scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
 }
 
@@ -980,7 +980,3 @@ footer {
 .social i:hover {
   color: #572EE5;
 }
-
-/*# sourceMappingURL=styles.css.map */
-
-/*# sourceMappingURL=styles.css.map */
